@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSExtension</key>
+	<dict>
+		<key>NSExtensionAttributes</key>
+		<dict>
+			<key>ILMessageFilterExtensionNetworkURL</key>
+			<string>https://b8f2-2806-2f0-33a0-f5ac-61d7-7015-1ef4-7887.ngrok-free.app/Voice/handle-sms-ios</string>
+		</dict>
+		<key>NSExtensionPointIdentifier</key>
+		<string>com.apple.identitylookup.message-filter</string>
+		<key>NSExtensionPrincipalClass</key>
+		<string>$(PRODUCT_MODULE_NAME).MessageFilterExtension</string>
+	</dict>
+</dict>
+</plist>
