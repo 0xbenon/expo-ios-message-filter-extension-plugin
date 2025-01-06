@@ -3,6 +3,8 @@ import * as path from "path";
 import {
   PBXBuildFile,
   PBXFileReference,
+  PBXFileSystemSynchronizedBuildFileExceptionSet,
+  PBXFileSystemSynchronizedRootGroup,
   PBXNativeTarget,
   XCBuildConfiguration,
   XCConfigurationList,
@@ -160,25 +162,25 @@ const applyXcodeChanges = (
    * is not necessary for building, so I will fix it
    * later.
    */
-  // const syncRootGroup = PBXFileSystemSynchronizedRootGroup.create(project, {
-  //   path: props.extensionTargetName,
-  //   exceptions: [
-  //     PBXFileSystemSynchronizedBuildFileExceptionSet.create(project, {
-  //       target: targetToAdd,
-  //       membershipExceptions: [
-  //         "Info.plist"
-  //       ]
-  //     }),
-  //   ],
-  //   explicitFileTypes: {},
-  //   explicitFolders: [],
-  //   sourceTree: "<group>",
-  // });
+  const syncRootGroup = PBXFileSystemSynchronizedRootGroup.create(project, {
+    path: props.extensionTargetName,
+    exceptions: [
+      PBXFileSystemSynchronizedBuildFileExceptionSet.create(project, {
+        target: targetToAdd,
+        membershipExceptions: [
+          "Info.plist"
+        ]
+      }),
+    ],
+    explicitFileTypes: {},
+    explicitFolders: [],
+    sourceTree: "<group>",
+  });
 
-  // if (!targetToAdd.props.fileSystemSynchronizedGroups) {
-  //   targetToAdd.props.fileSystemSynchronizedGroups = [];
-  // }
-  // targetToAdd.props.fileSystemSynchronizedGroups.push(syncRootGroup);
+  if (!targetToAdd.props.fileSystemSynchronizedGroups) {
+    targetToAdd.props.fileSystemSynchronizedGroups = [];
+  }
+  targetToAdd.props.fileSystemSynchronizedGroups.push(syncRootGroup);
   // project.rootObject.props.mainGroup.props.children.push(syncRootGroup);
 
   // Apply developmentIdTargets
